@@ -34,21 +34,27 @@ public class ProveedorLogica implements IProveedorLogica {
 	}
 
 	@Override
-	public Proveedor agregarProveedor(Proveedor proveedor) {
+	public Proveedor agregarProveedor(Proveedor proveedor) 
+	{
 		Respuesta<Object> respuesta = iverficarnombre.verificarNombre(proveedor.getNombre());
-		if(!respuesta.getOk()) {
+		if(!respuesta.getOk())
 			throw new RuntimeException(respuesta.getMensaje());	
-		}
 		respuesta = iverificarTelefono.verificarTelefono(proveedor.getTelefono());
-		if(!respuesta.getOk()) {
+		if(!respuesta.getOk())
 			throw new RuntimeException(respuesta.getMensaje());	
-		}
 		return this.repositorio.save(proveedor);
 	}
 
 	@Override
-	public Proveedor modificarProveedor(Proveedor proveedor) {
+	public Proveedor modificarProveedor(Proveedor proveedor) 
+	{
+		Respuesta<Object> respuesta = iverficarnombre.verificarNombre(proveedor.getNombre());
+		if(!respuesta.getOk())
+			throw new RuntimeException(respuesta.getMensaje());
+		respuesta = iverificarTelefono.verificarTelefono(proveedor.getTelefono());
+		if(!respuesta.getOk())
+			throw new RuntimeException(respuesta.getMensaje());
+		//proveedor.setFechaRegistro(repositorio.findById(proveedor.getId()).get().getFechaRegistro());
 		return this.repositorio.save(proveedor);
 	}
-
 }

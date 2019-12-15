@@ -15,10 +15,11 @@ public class Respuesta<T> {
 		this.mensajeError = msg;
 	}
 	
-	public Respuesta(Boolean ok, T resultado) 
+	public Respuesta(Boolean ok, T resultado, String msg) 
 	{
 		this.ok = ok;
 		this.resultado = resultado;
+		this.mensajeError = msg;
 	}
 	
 	public Boolean getOk() {

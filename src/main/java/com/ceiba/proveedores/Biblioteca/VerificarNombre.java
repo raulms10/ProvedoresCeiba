@@ -9,7 +9,7 @@ public class VerificarNombre implements IVerificarNombre {
 
 	@Override
 	public Respuesta<Object> verificarNombre(String nombre) {
-		if(nombre.length()>5) {
+		if(nombre.length()<5) {
 			return new Respuesta<Object>(false, "El nombre debe tener minimo 5 caracteres");
 		}
 		
@@ -20,7 +20,7 @@ public class VerificarNombre implements IVerificarNombre {
 		}
 		
 		if(nombre.toLowerCase().equals(palindromo)) {
-			return new Respuesta<Object>(false, "El nombre debe tener minimo 5 caracteres");
+			return new Respuesta<Object>(false, "El nombre no debe ser palindromo");
 		}
 		return new Respuesta<Object>(true, "");
 	}

@@ -11,7 +11,7 @@ public class VerificarTelefono implements IVerificarTelefono {
 		
 		if(String.valueOf(telefono).length()!=7) 
 		{
-			return new Respuesta<Object>(false, "El numero telefonico debe ser exactamente 7");	
+			return new Respuesta<Object>(false, "El numero telefonico debe ser exactamente 7 digitos");	
 		}
 		return new Respuesta<Object>(true, "");
 	}

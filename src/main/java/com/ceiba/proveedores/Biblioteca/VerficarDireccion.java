@@ -11,6 +11,10 @@ public class VerficarDireccion implements IVerficarDireccion {
 		{
 			return new Respuesta<Object>(false, "La direccion debe iniciar con CL");
 		}
+		if(!direccion.toLowerCase().startsWith("cl")) 
+		{
+			return new Respuesta<Object>(false, "La direccion debe iniciar con CL");
+		}
 		
 		return new Respuesta<Object>(true, "");
 	}
