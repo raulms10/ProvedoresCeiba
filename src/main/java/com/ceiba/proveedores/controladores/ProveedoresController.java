@@ -37,7 +37,7 @@ public class ProveedoresController {
 	}
     
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/Add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public Respuesta<Proveedor> AgregarProveedor(@Valid @RequestBody Proveedor proveedor )
     {
     	try {
