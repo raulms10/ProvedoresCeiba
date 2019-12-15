@@ -10,7 +10,4 @@ import com.ceiba.proveedores.modelo.Proveedor;
 @Repository
 public interface ProveedoresRepository extends JpaRepository<Proveedor, Integer>
 {
-	List<Proveedor> findAll();
-	Proveedor findOne(int id);
-	Proveedor save(Proveedor proveedor);
 }

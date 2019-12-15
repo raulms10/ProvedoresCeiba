@@ -21,7 +21,7 @@ public class ProveedorLogica implements IProveedorLogica {
 
 	@Override
 	public Proveedor obtenerPorId(int id) {
-		return repositorio.findOne(id);
+		return repositorio.findById(id).get();
 	}
 
 	@Override
