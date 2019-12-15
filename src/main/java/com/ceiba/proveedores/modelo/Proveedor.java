@@ -11,6 +11,7 @@ public class Proveedor
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Column(name = "nombre")
     private String nombre;
     private Date fechaRegistro;
     private int telefono;
@@ -41,28 +42,28 @@ public class Proveedor
         this.id = id;
     }
 
-    public String nombre() {
+    public String getNombre() {
         return nombre;
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public Date fechaRegistro() {
+    public Date getFechaRegistro() {
         return fechaRegistro;
     }
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public int telefono() {
+    public int getTelefono() {
         return telefono;
     }
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
-    public String direccion() {
+    public String getDireccion() {
         return direccion;
     }
     public void setDireccion(String direccion) {
