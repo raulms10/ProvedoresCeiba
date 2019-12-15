@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/")
 public class holaControlador 
 {
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/hola", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String Hola() {
 		return "Hola Mundo";
 	}

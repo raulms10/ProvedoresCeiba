@@ -1,9 +1,16 @@
 package com.ceiba.proveedores.Repositorio;
 
-import com.ceiba.proveedores.modelo.Proveedor;
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 
-public interface ProveedoresRepository extends CrudRepository<Proveedor, Integer> 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.ceiba.proveedores.modelo.Proveedor;
+
+@Repository
+public interface ProveedoresRepository extends JpaRepository<Proveedor, Integer>
 {
-    Proveedor findByName(String nombre);
+	List<Proveedor> findAll();
+	Proveedor findOne(int id);
+	Proveedor save(Proveedor proveedor);
 }

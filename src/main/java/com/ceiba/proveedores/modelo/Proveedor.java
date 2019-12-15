@@ -24,6 +24,13 @@ public class Proveedor
         this.telefono = telefono;
         this.direccion = direccion;
     }
+    public Proveedor(Proveedor proveedor) 
+    {
+        this.nombre = proveedor.nombre;
+        this.fechaRegistro = proveedor.fechaRegistro;
+        this.telefono = proveedor.telefono;
+        this.direccion = proveedor.direccion;
+    }
 
     public int getId()
     {
