@@ -1,7 +1,5 @@
 package com.ceiba.proveedores.Biblioteca;
 
-import java.util.Iterator;
-
 import org.springframework.stereotype.Component;
 import com.ceiba.proveedores.modelo.Respuesta;
 
