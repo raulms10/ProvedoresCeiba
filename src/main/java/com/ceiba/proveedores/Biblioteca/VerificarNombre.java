@@ -19,7 +19,7 @@ public class VerificarNombre implements IVerificarNombre {
 			palindromo += invertir[i];
 		}
 		
-		if(nombre.toLowerCase().equals(palindromo)) {
+		if(nombre.trim().toLowerCase().equals(palindromo)) {
 			return new Respuesta<Object>(false, "El nombre no debe ser palindromo");
 		}
 		return new Respuesta<Object>(true, "");
