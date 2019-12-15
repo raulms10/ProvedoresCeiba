@@ -7,6 +7,7 @@ import javax.transaction.SystemException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ceiba.proveedores.Biblioteca.IVerficarDireccion;
 import com.ceiba.proveedores.Biblioteca.IVerificarNombre;
 import com.ceiba.proveedores.Biblioteca.IVerificarTelefono;
 import com.ceiba.proveedores.Repositorio.ProveedoresRepository;
@@ -22,6 +23,8 @@ public class ProveedorLogica implements IProveedorLogica {
 	private IVerificarNombre iverficarnombre;
 	@Autowired
 	private IVerificarTelefono iverificarTelefono;
+	@Autowired
+	private IVerficarDireccion iverificarDireccion;
 	
 	@Override
 	public List<Proveedor> obtenerTodosProveedores() {
@@ -39,9 +42,17 @@ public class ProveedorLogica implements IProveedorLogica {
 		Respuesta<Object> respuesta = iverficarnombre.verificarNombre(proveedor.getNombre());
 		if(!respuesta.getOk())
 			throw new RuntimeException(respuesta.getMensaje());	
+		
 		respuesta = iverificarTelefono.verificarTelefono(proveedor.getTelefono());
 		if(!respuesta.getOk())
-			throw new RuntimeException(respuesta.getMensaje());	
+			throw new RuntimeException(respuesta.getMensaje());
+		
+		respuesta = iverificarDireccion.verificarDireccion(proveedor.getDireccion());
+		if(!respuesta.getOk())
+			throw new RuntimeException(respuesta.getMensaje());
+		
+		if(EsDomingo(proveedor.getFechaRegistro().getDay())) 
+			throw new RuntimeException("El dia de registro no puede ser domingo");	
 		return this.repositorio.save(proveedor);
 	}
 
@@ -54,7 +65,12 @@ public class ProveedorLogica implements IProveedorLogica {
 		respuesta = iverificarTelefono.verificarTelefono(proveedor.getTelefono());
 		if(!respuesta.getOk())
 			throw new RuntimeException(respuesta.getMensaje());
-		//proveedor.setFechaRegistro(repositorio.findById(proveedor.getId()).get().getFechaRegistro());
+		proveedor.setFechaRegistro(repositorio.findById(proveedor.getId()).get().getFechaRegistro());
 		return this.repositorio.save(proveedor);
+	}
+	
+	private Boolean EsDomingo(int dia) 
+	{
+		return dia == 6;
 	}
 }
